@@ -1,5 +1,1 @@
-# Projeto de web
-
-Conteudo passado na aula
-
-> Aluno: Andre Luiz de lima
+# Projeto da diciplina de programação web, cardapio digital
