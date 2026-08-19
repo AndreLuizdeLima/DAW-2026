@@ -5,6 +5,8 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <div className="min-h-screen bg-[#FAFAF9] font-sans">
+      <App />
+    </div>
   </StrictMode>,
 );
