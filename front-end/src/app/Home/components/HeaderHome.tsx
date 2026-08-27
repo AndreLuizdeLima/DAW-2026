@@ -2,9 +2,9 @@ import { ShoppingCart } from "lucide-react";
 
 const HeaderHome = () => {
   return (
-    <header className="p-5">
+    <header className="p-2">
       <div className="flex flex-row justify-between h-24 items-center">
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-row items-end gap-4">
           <img src="data/logo_lanchonete.svg" className="h-24" />
           <div>
             <h1 className="text-xl font-semibold">Cardápio digital</h1>

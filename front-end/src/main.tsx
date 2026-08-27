@@ -6,7 +6,9 @@ import "./index.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <div className="min-h-screen bg-[#FAFAF9] font-sans">
-      <App />
+      <div className="mx-auto w-full max-w-[3000px] px-4 lg:px-6 2xl:px-8">
+        <App />
+      </div>
     </div>
   </StrictMode>,
 );
