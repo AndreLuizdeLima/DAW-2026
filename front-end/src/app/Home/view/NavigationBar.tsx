@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import Badge, { type BageProps } from "../../../components/Badge";
+import Badge, { type BageProps } from "@/components/Badge";
 
 const NavigationBar = () => {
   const options = useMemo<BageProps[]>(
