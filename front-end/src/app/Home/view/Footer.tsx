@@ -8,7 +8,7 @@ const Footer = () => {
     },
     {
       icon: <MapPin />,
-      value: "Pato branco - PR",
+      value: "Pato Branco - PR",
     },
   ];
 
