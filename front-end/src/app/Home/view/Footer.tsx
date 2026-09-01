@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-orange-500 p-5">
+    <footer className="bg-secondary p-5">
       <div className="flex flex-row w-full justify-between items-center">
         <section className="flex flex-col gap-2 ">
           {contacts.length

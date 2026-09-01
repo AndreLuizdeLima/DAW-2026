@@ -1,5 +1,12 @@
 import { formatCurrency } from "@/lib/formatCurrency";
-import Badge from "./Badge";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export type ProductCardProps = {
   name: string;
@@ -15,23 +22,25 @@ const ProductCard = ({
   preco,
 }: ProductCardProps) => {
   return (
-    <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md">
+    <Card className="gap-0 rounded-2xl !py-0 shadow-sm transition hover:shadow-md">
       <div className="aspect-video w-full overflow-hidden">
         <img src={imagem} alt={name} className="h-full w-full object-cover" />
       </div>
 
-      <div className="flex flex-col gap-2 p-4">
+      <CardHeader className="pt-4">
         <div className="flex items-center justify-between gap-4">
-          <h3 className="text-base font-semibold text-zinc-900">{name}</h3>
+          <CardTitle>{name}</CardTitle>
 
-          <Badge value={formatCurrency(preco)} hasActive={true} />
+          <Badge>{formatCurrency(preco)}</Badge>
         </div>
+      </CardHeader>
 
-        <p className="line-clamp-2 text-sm leading-relaxed text-zinc-500">
+      <CardContent className="pb-4">
+        <CardDescription className="line-clamp-2 leading-relaxed">
           {description}
-        </p>
-      </div>
-    </div>
+        </CardDescription>
+      </CardContent>
+    </Card>
   );
 };
 
