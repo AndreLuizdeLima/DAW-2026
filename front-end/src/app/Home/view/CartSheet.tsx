@@ -14,13 +14,7 @@ const CartSheet = () => {
   return (
     <Sheet>
       <SheetTrigger
-        render={
-          <Button
-            variant="default"
-            className="rounded-full w-14 h-14"
-            aria-label="Abrir carrinho"
-          />
-        }
+        render={<Button variant="default" className="rounded-full w-14 h-14" />}
       >
         <ShoppingCart />
       </SheetTrigger>
