@@ -10,8 +10,12 @@ const NavigationBar = () => {
   const options = useMemo<NavigationOption[]>(
     () => [
       {
-        value: "Lanches",
+        value: "Todos",
         hasActive: true,
+      },
+      {
+        value: "Lanches",
+        hasActive: false,
       },
       {
         value: "Porções",

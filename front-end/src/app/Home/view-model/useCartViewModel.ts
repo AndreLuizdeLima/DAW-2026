@@ -7,6 +7,7 @@ type CartItem = {
 export type CartViewModel = {
   items: CartItem[];
   addProduct: (name: string) => void;
+  hasProduct: (name: string) => boolean;
 };
 
 export function useCartViewModel(): CartViewModel {
@@ -25,8 +26,13 @@ export function useCartViewModel(): CartViewModel {
     });
   }
 
+  function hasProduct(name: string) {
+    return Boolean(itemsByName[name]);
+  }
+
   return {
     items: Object.values(itemsByName),
     addProduct,
+    hasProduct,
   };
 }

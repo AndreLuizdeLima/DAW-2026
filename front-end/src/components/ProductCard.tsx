@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/lib/formatCurrency";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Check, ShoppingCart } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -15,6 +15,7 @@ export type ProductCardProps = {
   description: string;
   imagem: string;
   preco: number;
+  hasAdicionadoCarrinho?: boolean;
   onAddToCart?: () => void;
 };
 
@@ -23,6 +24,7 @@ const ProductCard = ({
   description,
   imagem,
   preco,
+  hasAdicionadoCarrinho = false,
   onAddToCart,
 }: ProductCardProps) => {
   return (
@@ -44,9 +46,17 @@ const ProductCard = ({
           {description}
         </CardDescription>
 
-        <Button className="mt-auto w-full" onClick={onAddToCart}>
-          <ShoppingCart aria-hidden="true" />
-          Adicionar
+        <Button
+          className="mt-auto w-full"
+          disabled={hasAdicionadoCarrinho}
+          onClick={onAddToCart}
+        >
+          {hasAdicionadoCarrinho ? (
+            <Check aria-hidden="true" />
+          ) : (
+            <ShoppingCart aria-hidden="true" />
+          )}
+          {hasAdicionadoCarrinho ? "Adicionado" : "Adicionar"}
         </Button>
       </CardContent>
     </Card>

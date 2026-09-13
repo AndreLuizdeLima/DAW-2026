@@ -24,6 +24,7 @@ const Products = ({ cartViewModel }: ProductsProps) => {
             <ProductCard
               {...product}
               key={product.name}
+              hasAdicionadoCarrinho={cartViewModel.hasProduct(product.name)}
               onAddToCart={() => cartViewModel.addProduct(product.name)}
             />
           ))
