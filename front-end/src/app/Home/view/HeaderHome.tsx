@@ -1,6 +1,11 @@
 import CartSheet from "./CartSheet";
+import type { CartViewModel } from "../view-model/useCartViewModel";
 
-const HeaderHome = () => {
+type HeaderHomeProps = {
+  cartViewModel: CartViewModel;
+};
+
+const HeaderHome = ({ cartViewModel }: HeaderHomeProps) => {
   return (
     <header className="p-2">
       <div className="flex flex-row justify-between h-24 items-end">
@@ -11,7 +16,7 @@ const HeaderHome = () => {
             <p className="text-md text-gray-500">Faça o seu pedido aqui</p>
           </div>
         </div>
-        <CartSheet />
+        <CartSheet cartViewModel={cartViewModel} />
       </div>
     </header>
   );

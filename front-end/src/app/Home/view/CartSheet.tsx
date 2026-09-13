@@ -1,5 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import type { CartViewModel } from "../view-model/useCartViewModel";
 import {
   Sheet,
   SheetContent,
@@ -10,7 +11,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const CartSheet = () => {
+type CartSheetProps = {
+  cartViewModel: CartViewModel;
+};
+
+const CartSheet = ({ cartViewModel }: CartSheetProps) => {
   return (
     <Sheet>
       <SheetTrigger
@@ -27,8 +32,23 @@ const CartSheet = () => {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="flex flex-1 items-center justify-center px-4 text-center text-muted-foreground">
-          <p>Seu carrinho está vazio.</p>
+        <div className="flex flex-1 px-4">
+          {cartViewModel.items.length ? (
+            <ul className="w-full space-y-2">
+              {cartViewModel.items.map((item) => (
+                <li
+                  key={item.name}
+                  className="rounded-md border px-3 py-2 font-medium"
+                >
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="m-auto text-center text-muted-foreground">
+              Seu carrinho está vazio.
+            </p>
+          )}
         </div>
 
         <SheetFooter className="border-t">

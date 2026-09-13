@@ -1,5 +1,7 @@
 import { formatCurrency } from "@/lib/formatCurrency";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -13,6 +15,7 @@ export type ProductCardProps = {
   description: string;
   imagem: string;
   preco: number;
+  onAddToCart?: () => void;
 };
 
 const ProductCard = ({
@@ -20,9 +23,10 @@ const ProductCard = ({
   description,
   imagem,
   preco,
+  onAddToCart,
 }: ProductCardProps) => {
   return (
-    <Card className="gap-0 rounded-2xl !py-0 shadow-sm transition hover:shadow-md">
+    <Card className="h-full gap-0 rounded-2xl py-0! shadow-sm transition hover:shadow-md">
       <div className="aspect-video w-full overflow-hidden">
         <img src={imagem} alt={name} className="h-full w-full object-cover" />
       </div>
@@ -35,10 +39,15 @@ const ProductCard = ({
         </div>
       </CardHeader>
 
-      <CardContent className="pb-4">
+      <CardContent className="flex flex-1 flex-col gap-4 pb-4">
         <CardDescription className="line-clamp-2 leading-relaxed">
           {description}
         </CardDescription>
+
+        <Button className="mt-auto w-full" onClick={onAddToCart}>
+          <ShoppingCart aria-hidden="true" />
+          Adicionar
+        </Button>
       </CardContent>
     </Card>
   );
