@@ -7,11 +7,16 @@ import { useCartViewModel } from "./view-model/useCartViewModel";
 const Home = () => {
   const cartViewModel = useCartViewModel();
 
+  const { options, handleSelectedOptions } = cartViewModel;
+
   return (
     <section className="flex flex-col h-dvh justify-between">
       <div className="flex flex-col gap-2 px-4">
         <HeaderHome cartViewModel={cartViewModel} />
-        <NavigationBar />
+        <NavigationBar
+          options={options}
+          handleSelectedOptions={handleSelectedOptions}
+        />
         <Products cartViewModel={cartViewModel} />
       </div>
       <Footer />

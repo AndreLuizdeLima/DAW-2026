@@ -1,34 +1,18 @@
-import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import type {
+  NavigationOption,
+  ValueOptions,
+} from "../view-model/useCartViewModel";
 
-type NavigationOption = {
-  value: string;
-  hasActive: boolean;
-};
+interface NavigationBarProps {
+  options: NavigationOption[];
+  handleSelectedOptions: (value: ValueOptions) => void;
+}
 
-const NavigationBar = () => {
-  const options = useMemo<NavigationOption[]>(
-    () => [
-      {
-        value: "Todos",
-        hasActive: true,
-      },
-      {
-        value: "Lanches",
-        hasActive: false,
-      },
-      {
-        value: "Porções",
-        hasActive: false,
-      },
-      {
-        value: "Sobremesas",
-        hasActive: false,
-      },
-    ],
-    [],
-  );
-
+const NavigationBar = ({
+  options,
+  handleSelectedOptions,
+}: NavigationBarProps) => {
   return (
     <nav className="flex flex-row gap-2">
       {options.length > 0
@@ -36,13 +20,14 @@ const NavigationBar = () => {
             <Button
               key={index}
               variant={i.hasActive ? "default" : "outline"}
+              onClick={() => handleSelectedOptions(i.value)}
               className={
                 i.hasActive
                   ? undefined
                   : "border-primary text-primary hover:bg-primary hover:text-primary-foreground"
               }
             >
-              {i.value}
+              {i?.label || i.value}
             </Button>
           ))
         : null}

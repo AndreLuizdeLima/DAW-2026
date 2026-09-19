@@ -2,15 +2,18 @@ import { IsNumber, IsString, Min } from 'class-validator';
 
 export class ProductDto {
   @IsString()
-  name: string;
+  name!: string;
 
   @IsString()
-  description: string;
+  description!: string;
 
   @IsString()
-  imagem: string;
+  imagem!: string;
 
   @IsNumber()
   @Min(0)
-  preco: number;
+  preco!: number;
+
+  @IsString()
+  typeProduct!: string;
 }
