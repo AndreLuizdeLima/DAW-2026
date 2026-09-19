@@ -9,12 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import type { NavigationOption } from "@/app/Home/view-model/useCartViewModel";
 
 export type ProductCardProps = {
   name: string;
   description: string;
   imagem: string;
   preco: number;
+  typeProduct: NavigationOption;
   hasAdicionadoCarrinho?: boolean;
   onAddToCart?: () => void;
 };

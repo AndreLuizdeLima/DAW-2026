@@ -1,5 +1,5 @@
 import type { ProductCardProps } from "@/components/ProductCard";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { NavigationOption } from "./useCartViewModel";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
@@ -50,5 +50,11 @@ export function useProducts(
     return () => abortController.abort();
   }, []);
 
-  return { products, isLoading, error };
+  const productsFilter = useMemo(() => {
+    if (!filter) return products;
+
+    return products.filter((i) => i.typeProduct === filter);
+  }, [filter, products]);
+
+  return { products: productsFilter, isLoading, error };
 }
