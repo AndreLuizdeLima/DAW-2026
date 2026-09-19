@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 type CartItem = {
   name: string;
@@ -16,6 +16,8 @@ export type NavigationOption = {
   hasActive: boolean;
   label?: string;
 };
+
+export type UseNavigationReturn = ReturnType<typeof useCartViewModel>;
 
 export function useCartViewModel() {
   const [itemsByName, setItemsByName] = useState<Record<string, CartItem>>({});
@@ -76,11 +78,17 @@ export function useCartViewModel() {
     );
   }, []);
 
+  const optionsSelected = useMemo<NavigationOption | undefined>(
+    () => options.find((i) => i.hasActive),
+    [options],
+  );
+
   return {
     items: Object.values(itemsByName),
     addProduct,
     hasProduct,
     options,
+    optionsSelected,
     handleSelectedOptions,
   };
 }

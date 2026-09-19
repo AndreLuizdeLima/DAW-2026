@@ -1,13 +1,14 @@
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "../view-model/useProducts";
-import type { CartViewModel } from "../view-model/useCartViewModel";
+import type { UseNavigationReturn } from "../view-model/useCartViewModel";
 
 type ProductsProps = {
-  cartViewModel: CartViewModel;
+  cartViewModel: UseNavigationReturn;
 };
 
 const Products = ({ cartViewModel }: ProductsProps) => {
-  const { products, isLoading, error } = useProducts();
+  const { optionsSelected } = cartViewModel;
+  const { products, isLoading, error } = useProducts(optionsSelected);
 
   if (isLoading) {
     return <p className="my-4">Carregando produtos...</p>;

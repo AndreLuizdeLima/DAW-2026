@@ -1,5 +1,6 @@
 import type { ProductCardProps } from "@/components/ProductCard";
 import { useEffect, useState } from "react";
+import type { NavigationOption } from "./useCartViewModel";
 
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
 
@@ -9,7 +10,9 @@ type UseProductsResult = {
   error: string | null;
 };
 
-export function useProducts(): UseProductsResult {
+export function useProducts(
+  filter?: NavigationOption | undefined,
+): UseProductsResult {
   const [products, setProducts] = useState<ProductCardProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
